@@ -1,20 +1,21 @@
 <html>
 <head>
 <title>Hämta position från GPS</title>
+
 </head>
 <body>
-Data:<br/>
+Här är kanske information:<br/>
 <div id="resultat"></div>
 
 <script>
-var id, target, option;
+
 
 function success(pos) {
   var crd = pos.coords;
-
   lat = crd.latitude;
   lon = crd.longitude;
-  document.getElementById("resultat").innerHTML = "Lat: " + lat + " Long: " + lon;
+  acc = crd.accuracy;
+  document.getElementById("resultat").innerHTML = "Lat: " + lat + " Long: " + lon + " Noggrannhet: " + acc + " meter.";
 };
 
 function error(err) {
@@ -22,13 +23,15 @@ function error(err) {
 };
 
 
-options = {
+var options = {
   enableHighAccuracy: true, //Använd GPS data
-  timeout: 5000, // vänta max antal milisekunder
-  maximumAge: 0 // anvönd inte gamla positionsdata
+  timeout: 3000, // vänta max antal milisekunder
+  maximumAge: 0 // använd inte gamla positionsdata
 };
 
-id = navigator.geolocation.watchPosition(success, error, options);
+var tid = 0
+var id = setInterval(function(){navigator.geolocation.getCurrentPosition(success, error, options);}, 2000);
+
 
 </script>
 
