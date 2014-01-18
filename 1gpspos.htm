@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Hämta position från GPS</title>
+</head>
+<body>
+
+<a href="javascript:void()" onClick="reqLoc()">Var är jag?</a>
+
+<script>
+function reqLoc() {
+	navigator.geolocation.getCurrentPosition(findMe);
+}
+function findMe(pos) {
+	var lat = pos.coords.latitude;
+	var long = pos.coords.longitude;
+	var acc = pos.coords.accuracy;
+	alert("Din Latitud är: " + lat + " och din longitud är: " + long + " med " + acc + " meters noggrannhet.");
+}
+</script>
+
+</body>
+</html>
