@@ -14,7 +14,12 @@ function findMe(pos) {
 	var lat = pos.coords.latitude;
 	var long = pos.coords.longitude;
 	var acc = pos.coords.accuracy;
-	alert("Din Latitud är: " + lat + " och din longitud är: " + long + " med " + acc + " meters noggrannhet.");
+	var alt = pos.coords.altitude;
+	var dir = pos.coords.heading;
+	var spd = pos.coords.speed;
+	alert("Din Latitud är: " + lat + " och din longitud är: " + long + " med " + acc + " meters noggrannhet. Din höjd är: " + alt + " och din kurs och fart är: " + dir + "/" + 
+
+spd);
 }
 </script>
 
