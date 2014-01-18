@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Hämta position från GPS</title>
+</head>
+<body>
+<div class="resultat"></div>
+
+<script>
+
+var positionTimer = navigator.geolocation.watchPosition(
+function( pos ){
+ 
+	console.log( "Newer Position Found" );
+	var lat = pos.coords.latitude;
+	var long = pos.coords.longitude;
+	var acc = pos.coords.accuracy;
+	var alt = pos.coords.altitude;
+	var dir = pos.coords.heading;
+	var spd = pos.coords.speed;
+	document.getElementById('resultat').innerHTML = "Din Latitud är: " + lat + " och din longitud är: " + long + " med " + acc + " meters noggrannhet. Din höjd är: " + alt + " och din 
+
+kurs och fart är: " + dir + "/" + spd;
+}
+);
+
+</script>
+
+</body>
+</html>
